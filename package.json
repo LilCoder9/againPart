@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "heroku-postbuild": "npm install && npm run build",
+    "heroku-postbuild": "npm install && npm run build && node number.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
