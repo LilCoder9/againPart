@@ -18,6 +18,8 @@ var currentState = 0;
 var error = "";
 var string = "";
 
+
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
