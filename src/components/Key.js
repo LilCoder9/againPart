@@ -15,7 +15,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
     const message = "";
     try {
       const response = await axios.post(
-        " http://localhost:3001/post_number",
+        " https://numbling2-abdf9822cff5.herokuapp.com/post_number",
         {
           number,
         }

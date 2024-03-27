@@ -178,7 +178,7 @@ function sharedString() {
   }
 }
 
-let numChange = new cron.CronJob("*/5 * * * *", () => {
+let numChange = new cron.CronJob("*/1 * * * *", () => {
   createRandomArray();
   console.log("reload");
   console.log(randomArray);
