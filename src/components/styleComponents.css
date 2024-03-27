@@ -1,0 +1,152 @@
+.rowNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  /* Set width to auto or a specific value */
+
+  /* Optionally, you can set max-width to limit the width */
+}
+
+.number {
+  flex: 33%;
+  height: 100%;
+  border: 1px solid rgb(32, 27, 27);
+  margin: 5px;
+  display: grid;
+  place-items: center;
+  font-family: "Pacifico", cursive;
+  font-size: 40px;
+  font-weight: bolder;
+  color: white;
+}
+
+.keyboard {
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+.line {
+  justify-content: center;
+  flex: 20%;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.key {
+  width: 60px;
+  height: 90px;
+  margin: 5px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-family: "Pacifico", cursive;
+  font-size: 20px;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow with desired properties */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add smooth transition for both transform and box-shadow */
+}
+
+.key:hover {
+  transform: scale(1.1); /* Enlarge the key on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); /* Increase shadow intensity on hover */
+}
+
+#big {
+  width: 100px;
+}
+
+.numberCurrent {
+  font-family: "Pacifico", cursive;
+  font-size: 55px;
+  font-weight: bold;
+  color: #ffffff; /* Orange color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.numberCurrent:hover {
+  transform: scale(1.1); /* Enlarge the number on hover */
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #000000;
+  border: 2px solid #f3f0f0;
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 1000; /* Ensure popup is above other elements */
+}
+
+.question-mark-button {
+  background-color: #0f0f0f; /* Dark background */
+  font-family: "Pacifico", cursive;
+  color: #fff; /* White text */
+  font-size: 1.5rem; /* Large font size */
+  font-weight: bold; /* Bold font */
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  border: #000000;
+  border-radius: 100%; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.instructions {
+  color: #f3f0f0;
+  font-family: "Pacifico", cursive;
+  font-size: 18px;
+}
+
+.number {
+  opacity: 1;
+}
+
+.number.underscore {
+  opacity: 0.2;
+}
+
+.close {
+  font-family: "Pacifico", cursive;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  font-size: 44px; /* Adjust the font size as needed */
+  color: red; /* Change the color to match your design */
+  cursor: pointer; /* Show cursor pointer on hover */
+}
+
+/* Style the close button on hover */
+.close:hover {
+  color: darkred; /* Change color on hover */
+}
+
+/* Style the close button when active (clicked) */
+.close:active {
+  transform: scale(0.9); /* Add a slight scale down effect when clicked */
+}
+
+.share-button {
+  margin-top: 20px;
+  background-color: #ff0000; /* Set button background color */
+  color: #fff; /* Set button text color */
+  padding: 10px 20px; /* Add padding */
+  font-size: 16px; /* Set font size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add cursor pointer */
+  transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+.share-button:hover {
+  background-color: #b30000; /* Change background color on hover */
+}

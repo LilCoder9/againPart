@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
-}
+/* Default styles */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.parent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
+  justify-content: center; /* Center content horizontally */
+  margin-top: 15px;
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  color: rgb(233, 43, 9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-size: 60px;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(5, 5, 5);
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin: 0; /* Reset default margin */
+}
+
+.game {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.number {
+  margin-top: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.question {
+  display: inline-flex;
+  justify-content: flex-end;
 }
+
+.question button {
+  margin-left: 55px; /* Adjust the margin as needed to move the button further to the right */
+}
+
+/* Media query for screens with width up to 1980px */
