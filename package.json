@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "cook": "node number.js"
+    "cook": "node number.js",
     "heroku-postbuild": "npm install && npm run build",
     "eject": "react-scripts eject"
   },
