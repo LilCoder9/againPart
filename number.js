@@ -26,7 +26,7 @@ app.get("/", cors(), async (req, res) => {
   res.send("This is working");
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`);
   createRandomArray();
   console.log(randomArray);
