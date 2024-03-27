@@ -16,9 +16,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start && node number.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "cook": "node number.js"
     "heroku-postbuild": "npm install && npm run build",
     "eject": "react-scripts eject"
   },
