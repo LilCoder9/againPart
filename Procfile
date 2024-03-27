@@ -1,1 +1,1 @@
-web: npm start && npm cook
+web: npm cook
