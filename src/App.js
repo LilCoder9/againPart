@@ -40,7 +40,7 @@ function App() {
           </span>
         </div>
         <AppContext.Provider
-          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand }}
+          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand, setRand }}
         >
           <div className="game">
             <Number className="number" />
