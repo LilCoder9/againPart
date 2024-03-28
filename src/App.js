@@ -14,13 +14,6 @@ function App() {
   const [rand, setRand] = useState(0);
   const [index, setIndex] = useState("");
 
-  useEffect(() => {
-    axios
-      .get("https://numbling2-abdf9822cff5.herokuapp.com/post_number")
-      .then(function (response) {
-        setRand(response.data);
-      });
-  });
 
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState(0);
