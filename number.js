@@ -30,9 +30,9 @@ app.get("*", (req,res)=> {
     res.sendFile(path.join(__dirname + '/build/index.html'))
 })
 
-app.get("/", cors(), async (req, res) => {
-  res.send("This is working");
-});
+// app.get("/", cors(), async (req, res) => {
+//   res.send("This is working");
+// });
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`);
