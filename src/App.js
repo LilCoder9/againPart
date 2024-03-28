@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/post_random")
+      .get("https://numbling2-abdf9822cff5.herokuapp.com/post_number")
       .then(function (response) {
         setRand(response.data);
       });
