@@ -19,10 +19,16 @@ var error = "";
 var string = "";
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get("*", (req,res)=> {
+    res.sendFile(path.join(__dirname + '/build/index.html'))
+})
 
 app.get("/", cors(), async (req, res) => {
   res.send("This is working");
