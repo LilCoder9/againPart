@@ -18,6 +18,13 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState(0);
 
+  useEffect(() => {
+    axios
+      .get("https://numbling2-abdf9822cff5.herokuapp.com/post_number")
+      .then(function (response) {
+        setRand(response.data.randomArray);
+      });
+  });
   const handleClick = () => {
     // Handle button click logic here
     console.log("Button clicked!");

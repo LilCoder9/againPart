@@ -40,6 +40,14 @@ app.listen(process.env.PORT || port, () => {
   console.log(randomArray);
 });
 
+
+
+// app.post("/start", async (req, res) => {
+//     //retrieves from react
+  
+//     res.send({randomArray}); // Send a response to the client
+//   });
+
 app.post("/post_number", async (req, res) => {
   //retrieves from react
   let { number } = req.body;
