@@ -57,7 +57,7 @@ app.post("/post_number", async (req, res) => {
 
   console.log(number);
 
-  res.send({ inputArr, error, string }); // Send a response to the client
+  res.send({ inputArr, error, string, randomArray}); // Send a response to the client
   error = "";
 });
 
