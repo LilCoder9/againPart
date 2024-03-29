@@ -26,8 +26,6 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
           if (response.data.inputArr[i] !== board[i]) {
             setBoard(response.data.inputArr);
             console.log(rand);
-            setRand(response.data.randomArray);
-            console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
             console.log("HI");
             // setPrev(true);
