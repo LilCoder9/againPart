@@ -19,13 +19,17 @@ function App() {
   const [currentAttempt, setCurrentAttempt] = useState(0);
 
   useEffect(() => {
-    axios
-      .get("https://numbling2-abdf9822cff5.herokuapp.com/start")
-      .then(function (response) {
-        //setRand(response.data.randomArray);
-      });
-  });
-
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://numbling2-abdf9822cff5.herokuapp.com/start");
+        setRand(response.data.randomArray);
+      } catch (error) {
+        console.error("There was an error!", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
 
 
