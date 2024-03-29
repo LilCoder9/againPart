@@ -27,7 +27,7 @@ function App() {
       );
       console.log("Received:", response.data);
       if (response.data.randomArray) {
-        setRandomArray(response.data.randomArray);
+        setRand(response.data.randomArray);
         console.log("Received randomArray:", response.data.randomArray);
       }
     } catch (error) {
