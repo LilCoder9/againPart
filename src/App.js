@@ -18,13 +18,25 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get("https://numbling2-abdf9822cff5.herokuapp.com/start")
-      .then(function (response) {
-        setRand(response.data.randomArray);
-      });
-  });
+  async function selectLetter(e) {
+    e.preventDefault();
+    const word="sned"
+    try {
+      const response = await axios.post(
+        " https://numbling2-abdf9822cff5.herokuapp.com/start",
+        {
+          word,
+        }
+      );
+      if (response.data.randomArray != null) {
+        setRand(response.data.randomArray)
+        console.log("revieed")
+      }
+    } catch (error) {
+      console.error("Error in POST request:", error);
+    }
+  }
+
 
 
 
