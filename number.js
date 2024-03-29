@@ -26,9 +26,6 @@ app.use(cors());
 
 
 app.use(express.static(path.join(__dirname, 'build')));
-app.get("*", (req,res)=> {
-    res.sendFile(path.join(__dirname + '/build/index.html'))
-})
 
 // app.get("/", cors(), async (req, res) => {
 //   res.send("This is working");
@@ -68,6 +65,10 @@ app.post("/post_number", async (req, res) => {
   res.send({ inputArr, error, string, randomArray}); // Send a response to the client
   error = "";
 });
+
+app.get("*", (req,res)=> {
+  res.sendFile(path.join(__dirname + '/build/index.html'))
+})
 
 function spotTaken(number) {
   if (inputArr[number - 1] != 0) {
