@@ -20,15 +20,11 @@ var string = "";
 
 const userStates = {}; // This object will map session IDs to game states
 
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(express.cookieParser());
- app.use(express.session());
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.get("*", (req,res)=> {
