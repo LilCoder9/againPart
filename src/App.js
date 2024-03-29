@@ -22,7 +22,7 @@ function App() {
     axios
       .get("https://numbling2-abdf9822cff5.herokuapp.com/start")
       .then(function (response) {
-        setRand(response.data.randomArray);
+        //setRand(response.data.randomArray);
       });
   });
 
