@@ -38,21 +38,15 @@ app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`);
   createRandomArray();
   console.log(randomArray);
-
-  app.post("/start", async (req, res) => {
-    res.send(randomArray);
-    console.log("sent");
-  });
-  
 });
 
 
 
-// app.post("/start", async (req, res) => {
-//     //retrieves from react
-  
-//     res.send({randomArray}); // Send a response to the client
-//   });
+app.post("/start", async (req, res) => {
+    //retrieves from react
+  console.log("SENDING....")
+    res.send({randomArray}); // Send a response to the client
+  });
 
 app.post("/post_number", async (req, res) => {
   //retrieves from react
@@ -120,10 +114,6 @@ function createRandomArray() {
     }
   }
 
-  app.post("/start", async (req, res) => {
-    res.send(randomArray);
-    console.log("sent");
-  });
 }
 
 function checkNextNumber() {
