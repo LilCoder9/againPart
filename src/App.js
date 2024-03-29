@@ -18,21 +18,17 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState(0);
 
-  async function selectLetter(e) {
-    e.preventDefault();
-    const word="sned"
+  async function fetchInitialData() {
+    const word = "sned";
     try {
       const response = await axios.post(
-        " https://numbling2-abdf9822cff5.herokuapp.com/start",
-        {
-          word,
-        }
+        "https://numbling2-abdf9822cff5.herokuapp.com/start",
+        { word }
       );
-      console.log("revieed")
-      if 
-      (response.data.randomArray != null) {
-        setRand(response.data.randomArray)
-        console.log("revieed")
+      console.log("Received:", response.data);
+      if (response.data.randomArray) {
+        setRandomArray(response.data.randomArray);
+        console.log("Received randomArray:", response.data.randomArray);
       }
     } catch (error) {
       console.error("Error in POST request:", error);
@@ -40,8 +36,9 @@ function App() {
   }
 
 
-
-
+  useEffect(() => {
+    fetchInitialData();
+  }, []); // Empty dependency array means this runs once on mount
   
   const handleClick = () => {
     // Handle button click logic here
