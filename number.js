@@ -44,54 +44,30 @@ app.listen(process.env.PORT || port, () => {
 
 
 app.post("/start", async (req, res) => {
-  const sessionId = req.sessionID; // Assuming you're using express-session or a similar middleware
-
-  // Initialize the game state for a new user or retrieve the existing state
-  if (!userStates[sessionId]) {
-      userStates[sessionId] = {
-          randomArray: createRandomArray(), // Assume this function now returns the array
-          inputArr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          currentState: 0,
-          error: "",
-          string: ""
-      };
-  }
-
-  console.log("SENDING....");
-  res.send({randomArray: userStates[sessionId].randomArray});
-});
+    //retrieves from react
+  console.log("SENDING....")
+    res.send({randomArray}); // Send a response to the client
+  });
 
 app.post("/post_number", async (req, res) => {
-  const sessionId = req.sessionID; // Assuming you're using express-session or a similar middleware
-  const { number } = req.body;
-  let response = {};
+  //retrieves from react
+  let { number } = req.body;
+  let intValue = parseInt(number);
+  var valid = true;
 
-  // Initialize the game state for a new user if it doesn't exist
-  if (!userStates[sessionId]) {
-    userStates[sessionId] = {
-      inputArr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      currentState: 0,
-      error: "",
-      string: ""
-    };
-  }
-
-  // Retrieve the user's game state
-  const { inputArr, currentState, error, string } = userStates[sessionId];
-
-  // Your existing logic for handling the number input goes here...
-  if (spotTaken(inputArr, number)) {
-    if (invalidSpot(inputArr, number)) {
+  if (spotTaken(intValue)) {
+    if (invalidSpot(intValue)) {
       console.log("HI");
       console.log(inputArr);
       checkNextNumber();
-      userStates[sessionId].currentState++; // Update the current state for this user
+      currentState++;
     }
   }
 
-  // Return the updated game state to the client
-  response = { inputArr, error, string };
-  res.send(response);
+  console.log(number);
+
+  res.send({ inputArr, error, string}); // Send a response to the client
+  error = "";
 });
 
 function spotTaken(number) {
