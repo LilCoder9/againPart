@@ -28,6 +28,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
             console.log("HI");
+            
             // setPrev(true);
             break;
           }

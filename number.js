@@ -54,18 +54,16 @@ const s = app.listen(process.env.PORT || port, () => {
 
 
 app.post("/start", async (req, res) => {
-  // Retrieve or initialize session data
-  req.session.randomArray = req.session.randomArray || createRandomArray();
-  
-  console.log("SENDING....");
-  res.send({ randomArray: req.session.randomArray });
+  //retrieves from react
+  console.log("SENDING....")
+  res.send({randomArray}); // Send a response to the client
 });
 
 app.post("/post_number", async (req, res) => {
-  // Retrieve user session data
-  const { number } = req.body;
-  const intValue = parseInt(number);
-  const inputArr = req.session.inputArr || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  //retrieves from react
+  let { number } = req.body;
+  let intValue = parseInt(number);
+  var valid = true;
 
   if (spotTaken(intValue)) {
     if (invalidSpot(intValue)) {
@@ -77,9 +75,6 @@ app.post("/post_number", async (req, res) => {
   }
 
   console.log(number);
-
-  req.session.inputArr = inputArr;
-
 
   res.send({ inputArr, error, string}); // Send a response to the client
   error = "";
