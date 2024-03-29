@@ -36,6 +36,8 @@ function App() {
   }
 
 
+  
+
   useEffect(() => {
     fetchInitialData();
   }, []); // Empty dependency array means this runs once on mount

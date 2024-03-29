@@ -1,10 +1,12 @@
 
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const port = 3001;
 const cors = require("cors");
 const cron = require("cron");
-const path = require("path")
+const path = require("path");
+
 
 const min = 1;
 const max = 99;
@@ -18,24 +20,32 @@ var currentState = 0;
 var error = "";
 var string = "";
 
-const userStates = {}; // This object will map session IDs to game states
-
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.get("*", (req,res)=> {
     res.sendFile(path.join(__dirname + '/build/index.html'))
 })
 
+
+
+
 // app.get("/", cors(), async (req, res) => {
 //   res.send("This is working");
 // });
 
-app.listen(process.env.PORT || port, () => {
+const s = app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`);
   createRandomArray();
   console.log(randomArray);
@@ -44,16 +54,18 @@ app.listen(process.env.PORT || port, () => {
 
 
 app.post("/start", async (req, res) => {
-    //retrieves from react
-  console.log("SENDING....")
-    res.send({randomArray}); // Send a response to the client
-  });
+  // Retrieve or initialize session data
+  req.session.randomArray = req.session.randomArray || createRandomArray();
+  
+  console.log("SENDING....");
+  res.send({ randomArray: req.session.randomArray });
+});
 
 app.post("/post_number", async (req, res) => {
-  //retrieves from react
-  let { number } = req.body;
-  let intValue = parseInt(number);
-  var valid = true;
+  // Retrieve user session data
+  const { number } = req.body;
+  const intValue = parseInt(number);
+  const inputArr = req.session.inputArr || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   if (spotTaken(intValue)) {
     if (invalidSpot(intValue)) {
@@ -65,6 +77,9 @@ app.post("/post_number", async (req, res) => {
   }
 
   console.log(number);
+
+  req.session.inputArr = inputArr;
+
 
   res.send({ inputArr, error, string}); // Send a response to the client
   error = "";
