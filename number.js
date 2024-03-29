@@ -18,6 +18,7 @@ var currentState = 0;
 var error = "";
 var string = "";
 
+const userStates = {}; // This object will map session IDs to game states
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -43,30 +44,54 @@ app.listen(process.env.PORT || port, () => {
 
 
 app.post("/start", async (req, res) => {
-    //retrieves from react
-  console.log("SENDING....")
-    res.send({randomArray}); // Send a response to the client
-  });
+  const sessionId = req.sessionID; // Assuming you're using express-session or a similar middleware
+
+  // Initialize the game state for a new user or retrieve the existing state
+  if (!userStates[sessionId]) {
+      userStates[sessionId] = {
+          randomArray: createRandomArray(), // Assume this function now returns the array
+          inputArr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          currentState: 0,
+          error: "",
+          string: ""
+      };
+  }
+
+  console.log("SENDING....");
+  res.send({randomArray: userStates[sessionId].randomArray});
+});
 
 app.post("/post_number", async (req, res) => {
-  //retrieves from react
-  let { number } = req.body;
-  let intValue = parseInt(number);
-  var valid = true;
+  const sessionId = req.sessionID; // Assuming you're using express-session or a similar middleware
+  const { number } = req.body;
+  let response = {};
 
-  if (spotTaken(intValue)) {
-    if (invalidSpot(intValue)) {
+  // Initialize the game state for a new user if it doesn't exist
+  if (!userStates[sessionId]) {
+    userStates[sessionId] = {
+      inputArr: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      currentState: 0,
+      error: "",
+      string: ""
+    };
+  }
+
+  // Retrieve the user's game state
+  const { inputArr, currentState, error, string } = userStates[sessionId];
+
+  // Your existing logic for handling the number input goes here...
+  if (spotTaken(inputArr, number)) {
+    if (invalidSpot(inputArr, number)) {
       console.log("HI");
       console.log(inputArr);
       checkNextNumber();
-      currentState++;
+      userStates[sessionId].currentState++; // Update the current state for this user
     }
   }
 
-  console.log(number);
-
-  res.send({ inputArr, error, string}); // Send a response to the client
-  error = "";
+  // Return the updated game state to the client
+  response = { inputArr, error, string };
+  res.send(response);
 });
 
 function spotTaken(number) {
