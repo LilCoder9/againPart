@@ -42,11 +42,11 @@ app.listen(process.env.PORT || port, () => {
 
 
 
-app.post("/start", async (req, res) => {
-    //retrieves from react
+// app.post("/start", async (req, res) => {
+//     //retrieves from react
   
-    res.send({randomArray}); // Send a response to the client
-  });
+//     res.send({randomArray}); // Send a response to the client
+//   });
 
 app.post("/post_number", async (req, res) => {
   //retrieves from react
@@ -114,7 +114,7 @@ function createRandomArray() {
     }
   }
 
-  app.get("/post_random", cors(), async (req, res) => {
+  app.post("/start", async (req, res) => {
     res.send(randomArray);
   });
 }
