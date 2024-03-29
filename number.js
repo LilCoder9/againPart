@@ -116,6 +116,7 @@ function createRandomArray() {
 
   app.post("/start", async (req, res) => {
     res.send(randomArray);
+    console.log("sent");
   });
 }
 
