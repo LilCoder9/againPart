@@ -18,22 +18,20 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState(0);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("https://numbling2-abdf9822cff5.herokuapp.com/post_number");
-  //       setRand(response.data.randomArray);
-  //     } catch (error) {
-  //       console.error("There was an error!", error);
-  //     }
-  //   };
+  useEffect(() => {
+    axios
+      .get("https://numbling2-abdf9822cff5.herokuapp.com/start")
+      .then(function (response) {
+        setRand(response.data.randomArray);
+      });
+  });
+
+
+
+
+
+
   
-  //   fetchData();
-  // }, []); 
-
-
-
-
   const handleClick = () => {
     // Handle button click logic here
     console.log("Button clicked!");
