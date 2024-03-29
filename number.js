@@ -38,6 +38,12 @@ app.listen(process.env.PORT || port, () => {
   console.log(`Listening at http://localhost:${port}`);
   createRandomArray();
   console.log(randomArray);
+
+  app.post("/start", async (req, res) => {
+    res.send(randomArray);
+    console.log("sent");
+  });
+  
 });
 
 
