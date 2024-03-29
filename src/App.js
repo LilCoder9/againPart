@@ -28,7 +28,9 @@ function App() {
           word,
         }
       );
-      if (response.data.randomArray != null) {
+      console.log("revieed")
+      if 
+      (response.data.randomArray != null) {
         setRand(response.data.randomArray)
         console.log("revieed")
       }
