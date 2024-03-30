@@ -27,7 +27,7 @@ const NumPad = () => {
         // Call the popup with a success message
         callPopup("Link copied to clipboard successfully!");
         // Optionally reset finishLink if you want the popup to behave differently next time
-        setFinishLink("");
+       // setFinishLink("");
       })
       .catch(error => {
         console.error("Failed to copy: ", error);
