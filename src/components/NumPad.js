@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import "./styleComponents.css";
 import Key from "./Key";
 import axios from "axios";
@@ -6,47 +6,58 @@ import axios from "axios";
 const NumPad = () => {
   const keys1 = ["1", "2", "3", "4", "5"];
   const keys2 = ["6", "7", "8", "9", "10"];
-  const [popupQueue, setPopupQueue] = useState([]);
+  const [erroruser, setError] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
   const [finishLink, setFinishLink] = useState("");
 
-    // Effect hook to display messages based on priority
-    useEffect(() => {
-      if (popupQueue.length > 0) {
-        // Sort messages by priority
-        const sortedQueue = [...popupQueue].sort((a, b) => a.priority - b.priority);
-        // Display the highest priority message
-        setPopupMessage(sortedQueue[0].message);
-        setShowPopup(true);
-        // Remove the displayed message from the queue
-        setPopupQueue(queue => queue.filter((_, index) => index !== 0));
-      } else {
-        setShowPopup(false);
-      }
-    }, [popupQueue]);
-
-  // Updated callPopup function to be more generic
-  // Function to queue popup messages
-  const callPopup = (message, finish = '', priority = 1) => {
-    setPopupQueue(queue => [...queue, { message, priority }]);
-    if (finish) {
+  const callPopup = (mes, finish) => {
+    setShowPopup(true);
+    setError(mes);
+    if (finish !== "") {
       setFinishLink(finish);
     }
   };
 
-  const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(finishLink)
-      .then(() => {
-        callPopup("Link copied to clipboard successfully!", "", 0); // 0 for highest priority
-        setFinishLink(""); // Optionally clear finishLink
-      })
-      .catch(error => {
-        console.error("Failed to copy: ", error);
-        callPopup("Failed to copy the link.", "", 0);
-      });
+  const handleClosePopup = () => {
+    // Set showPopup to false when the popup is closed
+    setShowPopup(false);
   };
 
+  const handleCopyToClipboard = () => {
+    navigator.clipboard
+      .writeText(finishLink)
+      .then(() => {
+        // Alert the user that the link has been copied
+        alert("Link copied to clipboard!");
+  
+        // Optional: If you want to keep the custom alert that appears on the screen for 2 seconds,
+        // you can keep the following code. Otherwise, you can remove it and just use the alert() above.
+        // Create and style the alert element
+        const alertElement = document.createElement("div");
+        alertElement.textContent = "Link copied to clipboard!";
+        alertElement.style.position = 'fixed';
+        alertElement.style.bottom = '20px';
+        alertElement.style.left = '50%';
+        alertElement.style.transform = 'translateX(-50%)';
+        alertElement.style.backgroundColor = 'rgba(0,0,0,0.7)';
+        alertElement.style.color = 'white';
+        alertElement.style.padding = '10px';
+        alertElement.style.borderRadius = '5px';
+        alertElement.style.zIndex = '1000';
+  
+        // Append the alert to the body
+        document.body.appendChild(alertElement);
+        // Remove the alert after 2 seconds
+        setTimeout(() => {
+          alertElement.remove();
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to copy: ", error);
+        // Optionally, you can alert the user that copying failed
+        alert("Failed to copy the link.");
+      });
+  };
   
 
   return (
@@ -54,12 +65,32 @@ const NumPad = () => {
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <span className="close" onClick={() => setShowPopup(false)}>&times;</span>
-            <div className="instructions">{popupMessage}</div>
+            <span
+              className="close"
+              onClick={handleClosePopup}
+              errorFunction={callPopup}
+            >
+              &times;
+            </span>
+            <div className="instructions">{erroruser}</div>
+            {finishLink !== "" && (
+              <button className="share-button" onClick={handleCopyToClipboard}>
+                Share!
+              </button>
+            )}
           </div>
         </div>
       )}
-      {/* Render keys */}
+      <div className="line">
+        {keys1.map((key) => (
+          <Key key={key} keyVal={key} errorFunction={callPopup} />
+        ))}
+      </div>
+      <div className="line">
+        {keys2.map((key) => (
+          <Key key={key} keyVal={key} errorFunction={callPopup} />
+        ))}
+      </div>
     </div>
   );
 };
