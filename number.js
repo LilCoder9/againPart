@@ -204,6 +204,7 @@ function sharedString() {
 
 let numChange = new cron.CronJob("*/9 * * * *", () => {
   createRandomArray();
+  inputArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   console.log("reload");
   console.log(randomArray);
   dayNum++;

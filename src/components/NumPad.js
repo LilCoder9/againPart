@@ -27,14 +27,26 @@ const NumPad = () => {
     navigator.clipboard
       .writeText(finishLink)
       .then(() => {
+        // Alert the user that the link has been copied
+        alert("Link copied to clipboard!");
+  
+        // Optional: If you want to keep the custom alert that appears on the screen for 2 seconds,
+        // you can keep the following code. Otherwise, you can remove it and just use the alert() above.
         // Create and style the alert element
         const alertElement = document.createElement("div");
         alertElement.textContent = "Link copied to clipboard!";
-
+        alertElement.style.position = 'fixed';
+        alertElement.style.bottom = '20px';
+        alertElement.style.left = '50%';
+        alertElement.style.transform = 'translateX(-50%)';
+        alertElement.style.backgroundColor = 'rgba(0,0,0,0.7)';
+        alertElement.style.color = 'white';
+        alertElement.style.padding = '10px';
+        alertElement.style.borderRadius = '5px';
+        alertElement.style.zIndex = '1000';
+  
         // Append the alert to the body
         document.body.appendChild(alertElement);
-        // Hide overflow to prevent scroll bar
-        document.body.style.overflow = "hidden";
         // Remove the alert after 2 seconds
         setTimeout(() => {
           alertElement.remove();
@@ -42,8 +54,11 @@ const NumPad = () => {
       })
       .catch((error) => {
         console.error("Failed to copy: ", error);
+        // Optionally, you can alert the user that copying failed
+        alert("Failed to copy the link.");
       });
   };
+  
 
   return (
     <div className="keyboard">
