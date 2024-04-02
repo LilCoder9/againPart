@@ -62,12 +62,14 @@ app.post("/start", async (req, res) => {
 app.post("/post_number", async (req, res) => {
   //retrieves from react
   let { number } = req.body;
+  console.log(req.body + "\n");
+  console.log(number);
   let intValue = parseInt(number);
   var valid = true;
 
   if (spotTaken(intValue)) {
     if (invalidSpot(intValue)) {
-      console.log("HI");
+      console.log("HI!!");
       console.log(inputArr);
       checkNextNumber();
       currentState++;
