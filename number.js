@@ -56,7 +56,7 @@ const s = app.listen(process.env.PORT || port, () => {
 app.post("/start", async (req, res) => {
   //retrieves from react
   console.log("SENDING....")
-  res.send({randomArray}); // Send a response to the client
+  res.send({randomArray, inputArr}); // Send a response to the client
 });
 
 app.post("/post_number", async (req, res) => {
