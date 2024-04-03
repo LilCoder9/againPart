@@ -12,7 +12,7 @@ function App() {
   // Assuming guess is a state variablE
   const [test, setTest] = useState("");
   const [rand, setRand] = useState(0);
-  const [index, setIndex] = useState("");
+  const [error, setError] = useState("");
 
 
   const [board, setBoard] = useState(boardDefault);
@@ -59,7 +59,7 @@ function App() {
           </span>
         </div>
         <AppContext.Provider
-          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand, setRand  }}
+          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand, setRand, error, setError  }}
         >
           <div className="game">
             <Number className="number" />

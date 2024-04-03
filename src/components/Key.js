@@ -3,7 +3,7 @@ import { AppContext } from "../App";
 import axios from "axios";
 
 const Key = ({ keyVal, bigKey, errorFunction }) => {
-  const { board, setBoard, currentAttempt, setCurrentAttempt, rand , setRand, state, setState } =
+  const { board, setBoard, currentAttempt, setCurrentAttempt, rand , setRand, state, setState , error, setError } =
     useContext(AppContext);
   const [selction, setSelection] = useState("");
   const [prev, setPrev] = useState(false);
@@ -38,9 +38,11 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             break;
           }
         }
+       // setError(response.data.error)
         console.log(response.data.error)
-        if (response.data.error !== '') {
+        if (error != response.data.error ) {
           console.log("inside")
+          setError(response.data.error)
           errorFunction(response.data.error, response.data.string);
           console.log("polo")
         }
