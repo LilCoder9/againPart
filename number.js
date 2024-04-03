@@ -60,6 +60,7 @@ app.post("/start", async (req, res) => {
 });
 
 app.post("/post_number", async (req, res) => {
+  error = "";
   //retrieves from react
   let { number } = req.body;
   console.log(req.body + "\n");
@@ -79,7 +80,7 @@ app.post("/post_number", async (req, res) => {
   console.log(number);
 
   res.send({ inputArr, error, string}); // Send a response to the client
-  error = "";
+ 
 });
 
 function spotTaken(number) {
