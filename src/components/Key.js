@@ -3,11 +3,10 @@ import { AppContext } from "../App";
 import axios from "axios";
 
 const Key = ({ keyVal, bigKey, errorFunction }) => {
-  const { board, setBoard, currentAttempt, setCurrentAttempt, rand , setRand } =
+  const { board, setBoard, currentAttempt, setCurrentAttempt, rand , setRand, state, setState } =
     useContext(AppContext);
   const [selction, setSelection] = useState("");
   const [prev, setPrev] = useState(false);
-  const [state, setState] = useState(0);
   async function selectLetter(e) {
     e.preventDefault();
     setSelection(keyVal);
@@ -17,7 +16,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
     const user = {
       inputNum : number,
       inputArry : board,
-      currPoint : state
+      currPoint : currentAttempt
     }
     try {
       const response = await axios.post(
