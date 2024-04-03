@@ -32,7 +32,8 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             setBoard(response.data.inputArr);
             console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
-            setState(response.data.currentState)
+            console.log(response.data.currentState)
+            setState(response.data.currentState);
             // setPrev(true);
             break;
           }

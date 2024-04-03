@@ -91,7 +91,7 @@ app.post("/post_number", async (req, res) => {
     }
   }
 
-  console.log(error);
+  console.log(currentState);
   
   res.send({ inputArr, error, string , currentState}); // Send a response to the client
   error = "";
