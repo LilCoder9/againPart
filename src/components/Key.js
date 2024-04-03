@@ -39,8 +39,9 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
           }
         }
        // setError(response.data.error)
+       console.log(error)
         console.log(response.data.error)
-        if (error != response.data.error ) {
+        if (error != "" ) {
           console.log("inside")
           setError(response.data.error)
           errorFunction(response.data.error, response.data.string);
