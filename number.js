@@ -65,8 +65,7 @@ app.post("/post_number", async (req, res) => {
   let { inputNum: number } = req.body.user;
   console.log(number);
   let { inputArry: array } = req.body.user;
-
-  let jsonArray = JSON.parse(array);
+  
   console.log("1111")
 // Convert each element in the array to an integer
   const intArray = array.map(element => parseInt(element, 10)); 
