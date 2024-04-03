@@ -87,7 +87,7 @@ app.post("/post_number", async (req, res) => {
       console.log("HI");
       console.log(inputArr);
       checkNextNumber();
-      currentState++;
+      currentState= currentState+1;
     }
   }
 
