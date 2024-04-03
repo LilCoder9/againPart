@@ -12,12 +12,17 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
     e.preventDefault();
     setSelection(keyVal);
     const number = String(keyVal);
-    const message = "";
+    const message = "what";
+
+    const user = {
+      inputNum : number,
+      inputArry : board
+    }
     try {
       const response = await axios.post(
         " https://numbling2-abdf9822cff5.herokuapp.com/post_number",
         {
-          number,
+          user,
         }
       );
       console.log("POST request successful:", response.data);
