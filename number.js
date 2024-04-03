@@ -62,8 +62,9 @@ app.post("/start", async (req, res) => {
 app.post("/post_number", async (req, res) => {
   error = "";
   //retrieves from react
-  let { number } = req.body.number;
-  console.log(req.body + "\n");
+  let { inputNum: number } = req.body.user;
+  let { inputArry: array } = req.body.user;
+  console.log(array);
   console.log(number);
   let intValue = parseInt(number);
   var valid = true;
