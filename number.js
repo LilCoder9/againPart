@@ -56,6 +56,7 @@ const s = app.listen(process.env.PORT || port, () => {
 app.post("/start", async (req, res) => {
   //retrieves from react
   console.log("SENDING....")
+  inputArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   res.send({randomArray, inputArr}); // Send a response to the client
 });
 
