@@ -56,7 +56,6 @@ const s = app.listen(process.env.PORT || port, () => {
 app.post("/start", async (req, res) => {
   //retrieves from react
   console.log("SENDING....")
-  inputArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   res.send({randomArray, inputArr}); // Send a response to the client
 });
 
@@ -64,7 +63,11 @@ app.post("/post_number", async (req, res) => {
   error = "";
   //retrieves from react
   let { inputNum: number } = req.body.user;
-  let { inputArry: array } = req.body.user;
+   let { inputArry: array } = req.body.user;
+   for(let po = 0; po < 9 ; po++){
+    inputArr[po]= array[po];
+   }
+
   console.log(array);
   console.log(number);
   let intValue = parseInt(number);

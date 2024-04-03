@@ -31,10 +31,7 @@ function App() {
         setRand(response.data.randomArray);
         console.log("Received randomArray:", response.data.randomArray);
       }
-      if(response.data.inputArr){
-        setInputArray(response.data.inputArr);
-        console.log("Recieved inputArray:", response.data.randoinputArrmArray);
-      }
+      setBoard(["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"])
     } catch (error) {
       console.error("Error in POST request:", error);
     }
