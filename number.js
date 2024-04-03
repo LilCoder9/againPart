@@ -62,7 +62,7 @@ app.post("/start", async (req, res) => {
 app.post("/post_number", async (req, res) => {
   error = "";
   //retrieves from react
-  let { number } = req.body;
+  let { number } = req.body.number;
   console.log(req.body + "\n");
   console.log(number);
   let intValue = parseInt(number);

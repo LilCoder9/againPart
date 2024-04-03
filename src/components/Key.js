@@ -33,7 +33,8 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             setInputArray(response.data.inputArr);
             console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
-            console.log("HI");
+            console.log(user);
+            console.log(number);
             
             // setPrev(true);
             break;
