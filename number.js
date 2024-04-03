@@ -56,26 +56,18 @@ const s = app.listen(process.env.PORT || port, () => {
 app.post("/start", async (req, res) => {
   //retrieves from react
   console.log("SENDING....")
-  res.send({randomArray, inputArr}); // Send a response to the client
+  res.send({randomArray}); // Send a response to the client
 });
 
 app.post("/post_number", async (req, res) => {
-  error = "";
   //retrieves from react
-  let { inputNum: number } = req.body.user;
-   let { inputArry: array } = req.body.user;
-   for(let po = 0; po < 9 ; po++){
-    inputArr[po]= array[po];
-   }
-
-  console.log(array);
-  console.log(number);
+  let { number } = req.body;
   let intValue = parseInt(number);
   var valid = true;
 
   if (spotTaken(intValue)) {
     if (invalidSpot(intValue)) {
-      console.log("HI!!");
+      console.log("HI");
       console.log(inputArr);
       checkNextNumber();
       currentState++;
@@ -85,7 +77,7 @@ app.post("/post_number", async (req, res) => {
   console.log(number);
 
   res.send({ inputArr, error, string}); // Send a response to the client
- 
+  error = "";
 });
 
 function spotTaken(number) {
@@ -212,7 +204,6 @@ function sharedString() {
 
 let numChange = new cron.CronJob("*/9 * * * *", () => {
   createRandomArray();
-  inputArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   console.log("reload");
   console.log(randomArray);
   dayNum++;

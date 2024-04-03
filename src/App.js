@@ -13,7 +13,6 @@ function App() {
   const [test, setTest] = useState("");
   const [rand, setRand] = useState(0);
   const [index, setIndex] = useState("");
-  const [inputArray, setInputArray] = useState(0);
 
 
   const [board, setBoard] = useState(boardDefault);
@@ -31,7 +30,6 @@ function App() {
         setRand(response.data.randomArray);
         console.log("Received randomArray:", response.data.randomArray);
       }
-      setBoard(["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"])
     } catch (error) {
       console.error("Error in POST request:", error);
     }
@@ -59,7 +57,7 @@ function App() {
           </span>
         </div>
         <AppContext.Provider
-          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand, setRand,inputArray ,setInputArray }}
+          value={{ board, setBoard, currentAttempt, setCurrentAttempt, rand, setRand }}
         >
           <div className="game">
             <Number className="number" />
