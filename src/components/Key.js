@@ -39,6 +39,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
         }
         if (response.data.error !== "") {
           errorFunction(response.data.error, response.data.string);
+          console.log("polo")
         }
       }
     } catch (error) {

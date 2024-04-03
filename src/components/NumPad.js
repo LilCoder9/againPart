@@ -12,6 +12,7 @@ const NumPad = () => {
 
   const callPopup = (mes, finish) => {
     setShowPopup(true);
+    console.log("polo!!")
     setError(mes);
     if (finish !== "") {
       setFinishLink(finish);
