@@ -7,7 +7,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
     useContext(AppContext);
   const [selction, setSelection] = useState("");
   const [prev, setPrev] = useState(false);
-
+  const [state, setState] = useState(0);
   async function selectLetter(e) {
     e.preventDefault();
     setSelection(keyVal);
@@ -16,7 +16,8 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
 
     const user = {
       inputNum : number,
-      inputArry : board
+      inputArry : board,
+      currPoint : state
     }
     try {
       const response = await axios.post(
@@ -32,7 +33,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             setBoard(response.data.inputArr);
             console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
-            console.log("HI");
+            setState(response.data.currentState)
             // setPrev(true);
             break;
           }

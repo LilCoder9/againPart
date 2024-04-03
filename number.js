@@ -65,10 +65,12 @@ app.post("/post_number", async (req, res) => {
   let { inputNum: number } = req.body.user;
   console.log(number);
   let { inputArry: array } = req.body.user;
-  
+  let {currPoint :  stringState} = req.body.user;
+  currentState = parseInt(stringState);
+  let jsonArray = JSON.parse(array);
   console.log("1111")
 // Convert each element in the array to an integer
-  const intArray = array.map(element => parseInt(element, 10)); 
+  const intArray = jsonArray.map(element => parseInt(element, 10)); 
   console.log("2222")
   for(let i =0; i < 10 ; i ++){
     inputArr[i] = intArray[i];
@@ -91,7 +93,7 @@ app.post("/post_number", async (req, res) => {
 
   console.log(number);
 
-  res.send({ inputArr, error, string}); // Send a response to the client
+  res.send({ inputArr, error, string , currentState}); // Send a response to the client
   error = "";
 });
 
