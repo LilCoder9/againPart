@@ -68,10 +68,10 @@ app.post("/post_number", async (req, res) => {
   let {currPoint :  stringState} = req.body.user;
   currentState = parseInt(stringState);
  
-  console.log("1111")
+
 // Convert each element in the array to an integer
   const intArray = array.map(element => parseInt(element, 10)); 
-  console.log("2222")
+  
   for(let i =0; i < 10 ; i ++){
     inputArr[i] = intArray[i];
   }
@@ -92,7 +92,7 @@ app.post("/post_number", async (req, res) => {
   }
 
   console.log(number);
-
+  console.log("FINALLY")
   res.send({ inputArr, error, string , currentState}); // Send a response to the client
   error = "";
 });
@@ -197,6 +197,7 @@ function checkNextNumber() {
     currentState !== 9
   ) {
     sharedString();
+    console.log("122222222222")
     error = `
     Womp Womp You Lost 
     Next Number Was ${randomArray[currentState + 1]}
