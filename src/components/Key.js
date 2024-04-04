@@ -34,6 +34,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             console.log(rand);
             setCurrentAttempt(currentAttempt + 1);
             console.log(response.data.error)
+            setError(String(response.data.error))
             setState(response.data.currentState);
 
             // setPrev(true);
@@ -41,7 +42,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
           }
         }
 
-        if (response.data.error && response.data.error.trim() !== ""){
+        if (error !== ""){
           console.log("inside")
           setError(response.data.error)
           errorFunction(response.data.error, response.data.string);
