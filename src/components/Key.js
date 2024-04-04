@@ -40,15 +40,16 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             break;
           }
         }
+
+        if (response.data.error !== "" ) {
+          console.log("inside")
+          setError(response.data.error)
+          errorFunction(response.data.error, response.data.string);
+          console.log("polo")
+        }
        // setError(response.data.error)
       }
 
-      if (response.data.error !== "" ) {
-        console.log("inside")
-        setError(response.data.error)
-        errorFunction(response.data.error, response.data.string);
-        console.log("polo")
-      }
     } catch (error) {
       console.error("Error in POST request:", error);
     }
