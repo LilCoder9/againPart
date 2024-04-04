@@ -198,8 +198,8 @@ function checkNextNumber() {
   ) {
     sharedString();
     console.log("122222222222")
-    error = `Womp Womp You Lost Next Number Was ${randomArray[currentState + 1]}
-  `;
+   // error = `Womp Womp You Lost Next Number Was ${randomArray[currentState + 1]} `;
+    error ="WOMP WOMP"
     win = false;
   } else if (currentState == 9) {
     error = "you win";
