@@ -67,8 +67,8 @@ app.post("/post_number", async (req, res) => {
   let { inputArry: array } = req.body.user;
   let {currPoint :  stringState} = req.body.user;
   currentState = parseInt(stringState);
- 
-
+  let {err :  errr} = req.body.user;
+  error = errr;
 // Convert each element in the array to an integer
   const intArray = array.map(element => parseInt(element, 10)); 
   

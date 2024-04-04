@@ -16,7 +16,8 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
     const user = {
       inputNum : number,
       inputArry : board,
-      currPoint : currentAttempt
+      currPoint : currentAttempt,
+      err : error
     }
     try {
       const response = await axios.post(
@@ -41,7 +42,7 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
        // setError(response.data.error)
        console.log(error)
         console.log(response.data.error)
-        if (error != "" ) {
+        if (response.data.error !== "" ) {
           console.log("inside")
           setError(response.data.error)
           errorFunction(response.data.error, response.data.string);
