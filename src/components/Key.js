@@ -35,19 +35,21 @@ const Key = ({ keyVal, bigKey, errorFunction }) => {
             setCurrentAttempt(currentAttempt + 1);
             console.log(response.data.error)
             setState(response.data.currentState);
+
+            if (response.data.error !== "" ) {
+              console.log("inside")
+              setError(response.data.error)
+              errorFunction(response.data.error, response.data.string);
+              console.log("polo")
+            }
+            
             // setPrev(true);
             break;
           }
         }
        // setError(response.data.error)
-       console.log(error)
-        console.log(response.data.error)
-        if (response.data.error !== "" ) {
-          console.log("inside")
-          setError(response.data.error)
-          errorFunction(response.data.error, response.data.string);
-          console.log("polo")
-        }
+
+
       }
     } catch (error) {
       console.error("Error in POST request:", error);
